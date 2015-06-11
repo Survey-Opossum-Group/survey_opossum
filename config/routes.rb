@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :answers
+  get 'sessions/login'
+
+  get 'sessions/logout'
+
   resources :questions
   resources :surveys
   resources :authors
