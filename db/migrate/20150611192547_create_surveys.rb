@@ -3,6 +3,8 @@ class CreateSurveys < ActiveRecord::Migration
     create_table :surveys do |t|
       t.string :name
       t.integer :author_id
+      t.boolean :publish
+      t.text :description
 
       t.timestamps null: false
     end

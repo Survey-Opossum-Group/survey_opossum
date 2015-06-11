@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   resources :answers
+  resources :questions
+  resources :surveys
+  resources :authors
   get 'sessions/login'
 
   get 'sessions/logout'
 
-  resources :questions
-  resources :surveys
-  resources :authors
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

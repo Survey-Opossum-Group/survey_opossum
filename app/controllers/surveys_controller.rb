@@ -69,6 +69,6 @@ class SurveysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
-      params.require(:survey).permit(:name, :author_id)
+      params.require(:survey).permit(:name, :author_id, :publish, :description)
     end
 end

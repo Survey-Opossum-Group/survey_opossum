@@ -4,6 +4,9 @@ class CreateQuestions < ActiveRecord::Migration
       t.string :name
       t.string :value
       t.integer :survey_id
+      t.boolean :required
+      t.integer :number
+      t.text :description
 
       t.timestamps null: false
     end
