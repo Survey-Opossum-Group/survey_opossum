@@ -29,17 +29,16 @@ gem 'bcrypt', '~> 3.1.7'
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'puma'
 end
 # Use Unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
+# gem 'capistrano-rails', group: :developme
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
