@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  value: MyString
+  survey_id: 1
+  required: false
+  number: 1
+  description: MyText
+
+two:
+  name: MyString
+  value: MyString
+  survey_id: 1
+  required: false
+  number: 1
+  description: MyText
