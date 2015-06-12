@@ -14,6 +14,50 @@
  *= require_self
  */
 
- .form {
-   color: blue;
+.navbar {
+  background-color: #2d4544;
+  top: 0;
+  left: 0;
+  height: 50px;
+  min-width: 100%;
+  position: fixed;
+  z-index: 1;
+}
+
+.navbartext {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 500;
+  color: white;
+  text-transform: uppercase;
+  float: right;
+  font-size: 15px;
+  padding-right: 75px;
+}
+
+body {
+   background-color: #009688;
+   font-family: 'Source Sans Pro', sans-serif;
  }
+
+h1 {
+  font-size: 300%;
+}
+
+.login {
+  display: block;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  padding-top: 200px;
+}
+
+.nifty {
+  min-height: 30em;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.button {
+  background-color: white;
+  display: inline-block;
+}

@@ -1,11 +1,20 @@
-<h1>Sessions#login</h1>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
 
-<%= form_tag do %>
-  <%= label_tag :email, class: 'form' %>
-  <%= text_field_tag :email %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Login" %>
-<% end %>
+<header class = "navbar">
+  <div class = "navbartext">
+  <%= link_to "Signup!", new_author_path %>
+  </div>
+</header>
 
-<%= link_to "Signup!", new_author_path %>
+<div class = "login">
+  <h1>Log In</h1>
+
+  <%= form_tag :class => "nifty" do %>
+    <%= label_tag :email, class: "email" %>
+    <%= text_field_tag :email %>
+    <%= label_tag :password, class: "password" %>
+    <%= password_field_tag :password %>
+    <%= submit_tag "Login", class: "button" %>
+  <% end %>
+
+</div>
