@@ -1,4 +1,5 @@
 class SurveysController < ApplicationController
+  before_action :logged_in?
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
 
   # GET /surveys
@@ -70,5 +71,13 @@ class SurveysController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
       params.require(:survey).permit(:name, :author_id, :publish, :description)
+    end
+
+    def logged_in?
+      if Author.find_by_id(session[:author_id])
+        return true
+      else
+        redirect_to sessions_login_path, notice: 'You must login before accessing this page.'
+      end
     end
 end
