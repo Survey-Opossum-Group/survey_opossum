@@ -5,7 +5,7 @@ class SurveysController < ApplicationController
   # GET /surveys
   # GET /surveys.json
   def index
-    @surveys = Survey.all
+    @author = Author.find_by_id(session[:author_id])
   end
 
   # GET /surveys/1
@@ -26,7 +26,8 @@ class SurveysController < ApplicationController
   # POST /surveys.json
   def create
     @survey = Survey.new(survey_params)
-
+    @survey.author_id = session[:author_id]
+    
     respond_to do |format|
       if @survey.save
         format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
