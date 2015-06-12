@@ -5,7 +5,7 @@ class SurveysController < ApplicationController
   # GET /surveys
   # GET /surveys.json
   def index
-    @surveys = Survey.all
+    @author = Author.find_by_id(session[:author_id])
   end
 
   # GET /surveys/1
