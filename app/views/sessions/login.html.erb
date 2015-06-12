@@ -1,9 +1,11 @@
 <h1>Sessions#login</h1>
 
 <%= form_tag do %>
-  <%= label_tag :email %>
+  <%= label_tag :email, class: 'form' %>
   <%= text_field_tag :email %>
   <%= label_tag :password %>
   <%= password_field_tag :password %>
   <%= submit_tag "Login" %>
 <% end %>
+
+<%= link_to "Signup!", new_author_path %>
