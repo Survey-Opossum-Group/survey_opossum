@@ -37,14 +37,3 @@ group :development, :test  do
   gem 'spring'
   gem 'sqlite3'
 end
-
-
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :developme
