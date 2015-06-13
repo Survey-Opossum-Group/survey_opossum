@@ -27,7 +27,7 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.new(survey_params)
     @survey.author_id = session[:author_id]
-    
+
     respond_to do |format|
       if @survey.save
         format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
@@ -71,7 +71,8 @@ class SurveysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
-      params.require(:survey).permit(:name, :author_id, :publish, :description)
+      params.require(:survey).permit(:name, :author_id, :publish, :description,
+        questions_attributes: [:id, :name, :value, :required, :number, :description, :_destroy])
     end
 
     def logged_in?
