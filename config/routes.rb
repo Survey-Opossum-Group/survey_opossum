@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :answers
   resources :questions
+
   resources :surveys
-  resources :authors
+
+  resources :authors 
+
   root 'surveys#index'
   get '/mysurveys' => 'surveys#user_index'
   get 'sessions/login'

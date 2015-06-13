@@ -1,15 +1,11 @@
 class SurveysController < ApplicationController
-  before_action :logged_in?, only: [:edit, :create, :destroy]
-  before_action :set_survey, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in? 
+  before_action :set_survey, only: [:show, :edit, :update]
 
   # GET /surveys
   # GET /surveys.json
   def index
     @author = Author.find_by_id(session[:author_id])
-  end
-
-  def user_index
-    @surveys = Survey.group(params[:id])
   end
 
   # GET /surveys/1
@@ -35,7 +31,7 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       if @survey.save
-        format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
+        format.html { redirect_to edit_survey_path(@survey), notice: 'Survey was successfully created.' }
         format.json { render :show, status: :created, location: @survey }
       else
         format.html { render :new }
@@ -61,6 +57,7 @@ class SurveysController < ApplicationController
   # DELETE /surveys/1
   # DELETE /surveys/1.json
   def destroy
+    @survey = Survey.find_by_id(params[:id])
     @survey.destroy
     respond_to do |format|
       format.html { redirect_to surveys_url, notice: 'Survey was successfully destroyed.' }

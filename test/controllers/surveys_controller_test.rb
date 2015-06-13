@@ -23,7 +23,7 @@ class SurveysControllerTest < ActionController::TestCase
       post :create, survey: { author_id: @survey.author_id, description: @survey.description, name: @survey.name, publish: @survey.publish }
     end
 
-    assert_redirected_to survey_path(assigns(:survey))
+    assert_redirected_to edit_survey_path(assigns(:survey))
   end
 
   test "should show survey" do

@@ -25,10 +25,7 @@
   </div>
   <h1>Questions!</h1>
   <%= f.fields_for(:questions) do |ff| %>
-  <div class="field">
-    <%= ff.label :name %><br>
-    <%= ff.text_field :name %>
-  </div>
+
   <div class="field">
     <%= ff.label :value %><br>
     <%= ff.text_field :value %>

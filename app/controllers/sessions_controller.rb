@@ -16,4 +16,5 @@ class SessionsController < ApplicationController
     session[:author_id] = nil
     redirect_to sessions_login_path, notice: "Successfully logged out."
   end
+
 end

@@ -25,7 +25,7 @@ class AuthorsController < ApplicationController
   # POST /authors.json
   def create
     @author = Author.new(author_params)
-
+    @author.id = session[:author_id]
     respond_to do |format|
       if @author.save
         format.html { redirect_to surveys_path, notice: 'Author was successfully created.' }
