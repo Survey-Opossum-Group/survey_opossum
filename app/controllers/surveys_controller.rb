@@ -1,11 +1,15 @@
 class SurveysController < ApplicationController
-  before_action :logged_in?
+  before_action :logged_in?, only: [:edit, :create, :destroy]
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
 
   # GET /surveys
   # GET /surveys.json
   def index
     @surveys = Survey.all
+  end
+
+  def user_index
+    @surveys = Survey.group(somethi)
   end
 
   # GET /surveys/1

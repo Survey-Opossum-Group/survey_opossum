@@ -7,7 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to "Logout", sessions_logout_path if session[:author_id]%>
+  <%= link_to "Home", root_path %>
+  <%= link_to "My surveys", surveys_path %>
+  <%= link_to "Create Survey", surveys_path %>
+  <%= link_to "Logout", sessions_logout_path if session[:author_id]%>
 <p id="notice"><%= notice %></p>
 <%= yield %>
 
