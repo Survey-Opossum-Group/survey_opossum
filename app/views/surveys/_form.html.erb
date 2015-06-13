@@ -23,6 +23,33 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+  <h1>Questions!</h1>
+  <%= f.fields_for(:questions) do |ff| %>
+  <div class="field">
+    <%= ff.label :name %><br>
+    <%= ff.text_field :name %>
+  </div>
+  <div class="field">
+    <%= ff.label :value %><br>
+    <%= ff.text_field :value %>
+  </div>
+  <div class="field">
+    <%= ff.label :required %><br>
+    <%= ff.check_box :required %>
+  </div>
+  <div class="field">
+    <%= ff.label :number %><br>
+    <%= ff.text_field :number %>
+  </div>
+  <div class="field">
+    <%= ff.label :description %><br>
+    <%= ff.text_field :description %>
+  </div>
+  <div class="field">
+    <%= ff.label :_destroy %><br>
+    <%= ff.check_box :_destroy %>
+  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
