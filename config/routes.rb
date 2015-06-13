@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :surveys
   resources :authors
   root 'surveys#index'
-  get 'mysurveys' => 'surveys#user_index'
+  get '/mysurveys' => 'surveys#user_index'
   get 'sessions/login'
   post 'sessions/login'
   get 'sessions/logout'

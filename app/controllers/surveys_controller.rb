@@ -9,7 +9,7 @@ class SurveysController < ApplicationController
   end
 
   def user_index
-    @surveys = Survey.group(somethi)
+    @surveys = Survey.group(params[:id])
   end
 
   # GET /surveys/1
