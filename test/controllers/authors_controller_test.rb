@@ -3,6 +3,7 @@ require 'test_helper'
 class AuthorsControllerTest < ActionController::TestCase
   setup do
     @author = authors(:one)
+    session[:author_id] = @author.id
   end
 
   test "should get index" do
@@ -16,13 +17,6 @@ class AuthorsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create author" do
-    assert_difference('Author.count') do
-      post :create, author: {email: @author.email, name: @author.name, password_digest: @author.password_digest }
-    end
-
-    assert_redirected_to author_path(assigns(:author))
-  end
 
   test "should show author" do
     get :show, id: @author

@@ -3,12 +3,14 @@ require 'test_helper'
 class SurveysControllerTest < ActionController::TestCase
   setup do
     @survey = surveys(:one)
+    @author = authors(:one)
+    session[:author_id] = @author.id
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:surveys)
+    assert_not_nil assigns(:author)
   end
 
   test "should get new" do
