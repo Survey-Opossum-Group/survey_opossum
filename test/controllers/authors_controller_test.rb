@@ -6,12 +6,6 @@ class AuthorsControllerTest < ActionController::TestCase
     session[:author_id] = @author.id
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:authors)
-  end
-
   test "should get new" do
     get :new
     assert_response :success
