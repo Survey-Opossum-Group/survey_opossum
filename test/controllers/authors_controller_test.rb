@@ -17,6 +17,7 @@ class AuthorsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+
   test "should show author" do
     get :show, id: @author
     assert_response :success
