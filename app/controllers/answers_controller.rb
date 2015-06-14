@@ -15,6 +15,7 @@ class AnswersController < ApplicationController
   # GET /answers/new
   def new
     @answer = Answer.new
+    @questions = Survey.find(session[:survey_id]).questions
   end
 
   # GET /answers/1/edit
@@ -65,6 +66,10 @@ class AnswersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_answer
       @answer = Answer.find(params[:id])
+    end
+
+    def set_author
+      @author = Author.find_by_id(session[:author_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
