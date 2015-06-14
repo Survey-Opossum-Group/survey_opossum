@@ -1,0 +1,10 @@
+<h1>Poop!</h1>
+
+<% @surveys.each do |s| %>
+  <% s.questions.each do |q| %>
+    <p><%= q.value %></p>
+    <% q.answers.each do |a| %>
+      <p><%= a.value %></p>
+    <% end %>
+  <% end %>
+<% end %>
