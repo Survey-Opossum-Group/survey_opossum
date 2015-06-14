@@ -1,16 +1,24 @@
 Rails.application.routes.draw do
   resources :answers
-  resources :questions
+  resources :questions do
+    get :take
+    post :take
+  end
 
-  resources :surveys
+  resources :surveys do
+    collection do
+      get :results
+    end
+  end
 
-  resources :authors 
+  resources :authors
 
   root 'surveys#index'
   get '/mysurveys' => 'surveys#user_index'
   get 'sessions/login'
   post 'sessions/login'
   get 'sessions/logout'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -67,6 +67,10 @@ class AnswersController < ApplicationController
       @answer = Answer.find(params[:id])
     end
 
+    def set_author
+      @author = Author.find_by_id(session[:author_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
       params.require(:answer).permit(:value, :question_id)
