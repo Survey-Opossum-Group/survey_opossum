@@ -17,7 +17,15 @@
 <p>
   <strong>Description:</strong>
   <%= @survey.description %>
+<p>
+  <strong>Questions</strong>
+  <% @survey.questions.each do |question| %>
+    <p><%= question.number%>. <%=question.description%><br><p>
+    <%end%>
+
+
 </p>
 
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back', surveys_path %>
+<%= link_to 'Take This Survey', answers_path %>

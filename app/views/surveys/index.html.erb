@@ -17,7 +17,12 @@
       <tr>
         <td><%= survey.name %></td>
         <td><%= survey.author_id %></td>
-        <td><%= survey.publish %></td>
+        <td><%= if survey.publish == true
+                link_to 'YES', survey
+                else
+                p "NO"
+                end
+                %></td>
         <td><%= survey.description %></td>
         <td><%= link_to 'Show', survey %></td>
         <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
