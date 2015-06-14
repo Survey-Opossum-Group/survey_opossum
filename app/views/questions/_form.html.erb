@@ -11,14 +11,8 @@
     </div>
   <% end %>
 
-
-  <%= f.fields_for(:answers) do |ff| %>
-    <div class="field">
-      <%= ff.label :value %><br>
-      <%= ff.text_field :value %>
-    </div>
+  <%= @survey.questions.each do |q| %>
+  <p><%= q.value %></p>
   <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<h1>cool</h1>
 <% end %>

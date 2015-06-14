@@ -15,6 +15,7 @@ class AnswersController < ApplicationController
   # GET /answers/new
   def new
     @answer = Answer.new
+    @questions = Survey.find(session[:survey_id]).questions
   end
 
   # GET /answers/1/edit

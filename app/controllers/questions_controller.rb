@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def take
+    @question = Question.new
   end
 
   # GET /questions/new
