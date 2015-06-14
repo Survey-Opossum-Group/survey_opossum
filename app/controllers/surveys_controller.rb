@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :logged_in? 
+  before_action :logged_in?
   before_action :set_survey, only: [:show, :edit, :update]
 
   # GET /surveys
@@ -11,6 +11,7 @@ class SurveysController < ApplicationController
   # GET /surveys/1
   # GET /surveys/1.json
   def show
+    
   end
 
   # GET /surveys/new
