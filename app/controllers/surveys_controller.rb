@@ -1,16 +1,20 @@
 class SurveysController < ApplicationController
-  before_action :logged_in? 
-  before_action :set_survey, only: [:show, :edit, :update]
+  before_action :logged_in?
+  before_action :set_survey, only: [:show, :edit, :update, :destroy]
+  before_action :set_author, only: [:index, :results]
 
   # GET /surveys
   # GET /surveys.json
   def index
-    @author = Author.find_by_id(session[:author_id])
   end
 
   # GET /surveys/1
   # GET /surveys/1.json
   def show
+  end
+
+  def results
+    @surveys = @author.surveys
   end
 
   # GET /surveys/new
@@ -57,7 +61,6 @@ class SurveysController < ApplicationController
   # DELETE /surveys/1
   # DELETE /surveys/1.json
   def destroy
-    @survey = Survey.find_by_id(params[:id])
     @survey.destroy
     respond_to do |format|
       format.html { redirect_to surveys_url, notice: 'Survey was successfully destroyed.' }
@@ -69,6 +72,10 @@ class SurveysController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_survey
       @survey = Survey.find(params[:id])
+    end
+
+    def set_author
+      @author = Author.find_by_id(session[:author_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
