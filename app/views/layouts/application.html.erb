@@ -5,14 +5,55 @@
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
+
+
+
 </head>
 <body>
-  <%= link_to "Home", root_path if session[:author_id]%>
-  <%= link_to "My surveys", surveys_path if session[:author_id]%>
-  <%= link_to "Create Survey", new_survey_path if session[:author_id]%>
-  <%= link_to "Logout", sessions_logout_path if session[:author_id]%>
+  <div class="top-nav-bar">
+    <!--<a href="#">Sign Up!</a>-->  <h1>Survey Opossum</h1>
+    <div class="navigation">
+      <ul>
+        <li>
+          <%= link_to "Logout", sessions_logout_path if session[:author_id]%>
+        </li>
+
+        <li>
+          <%= link_to "Create Survey", new_survey_path if session[:author_id]%>
+        </li>
+
+
+        <li>
+          <%= link_to "My Surveys", surveys_path if session[:author_id]%>
+        </li>
+
+        <li>
+          <%= link_to "Home", root_path if session[:author_id]%>
+        </li>
+
+
+  </ul>
+
+
+    </div>
+  </div>
+
+
+
+
+<div class="container">
+
+
+<!--login/error messages-->
 <p id="notice"><%= notice %></p>
+
+
 <%= yield %>
 
+
+
+</div>
 </body>
 </html>

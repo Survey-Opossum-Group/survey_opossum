@@ -1,3 +1,4 @@
+<div class="form">
 <%= form_for(@survey) do |f| %>
   <% if @survey.errors.any? %>
     <div id="error_explanation">
@@ -15,17 +16,53 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+
+<!-- #moved below#
+ <div class="field">
     <%= f.label :publish %><br>
     <%= f.check_box :publish %>
   </div>
+-->
+
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-  <h1>Questions!</h1>
+
+
+<!--  <h1>Questions!</h1> -->
   <%= f.fields_for(:questions) do |ff| %>
 
+
+
+    <div class="form-container">
+    <form  class="z_bootstrap-frm" id="target">
+      <input type="text" id="questionInput" name="question" placeholder="Type your question here..." autofocus>
+      <button type="submit" class="loginButton">+ Add</button>
+    </form>
+    <div style="clear:both;">
+
+    </div>
+    </div>
+
+
+
+    <script type="text/template" id="li-template">
+    <li class="question-preview" id="ruby-0">
+      <!--question from forms will go here-->
+    </li>
+    </script>
+
+    <ol class="question-container">
+       <!--questions will go here-->
+    </ol>
+
+
+
+<!--
+
+
+previous values, this should be merged/replaced with functionality above?
   <div class="field">
     <%= ff.label :value %><br>
     <%= ff.text_field :value %>
@@ -47,9 +84,73 @@
     <%= ff.check_box :_destroy %>
   </div>
   <% end %>
+-->
+
+
+<div class="field">
+  <%= f.label :publish, "Check Publish Survey" %>
+  <%= f.check_box :publish %>
+</div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update Survey" %>
   </div>
 <% end %>
 
+
+</div>
+
+<!--
+<script>
+
+// only works when it's form
+// which disabled the original editing survey form
+// does nothing when its set to class/id of my added form
+// also disabling create new survey button
+// and leaving some messy tags there
+// change form to whatever below, create new survey, edit, then change back to form to see it in action
+$('form').submit(function (e) {
+  // prevent form from submitting
+    e.stopPropagation();
+    e.preventDefault();
+
+    // grab user input & clear form
+    var inputValue = $('#questionInput').val();
+    $('#questionInput').val('');
+
+    // variable for li HTML. the first time it runs it should have an id of ruby-0.
+    var templateHtml = $('#li-template').html();
+
+    // add that LI to the DOM
+    $('.question-container').append(templateHtml);
+
+    // get the id of the last LI item on the page, which is the one we just added to the DOM
+     var fooID = $( '.question-container li:last-child' ).attr('id');
+    console.log(fooID);
+   // pass it to a function that will return that id+1 so it's always unique
+    var newID = uniqueID(fooID);
+
+    // LI already exists on the page with ruby-X ID, grab it and change ID to new one
+    $('.question-container li:last-child').attr('id', newID);
+
+      // stick the content into the LI we just added to the page
+    $('#'+newID).append(inputValue);
+
+    // now change the templateHtml script to also reflect this new ID so it is caught in the loop
+    // and each submission generates a new ID for each question
+    $('#li-template').html('<li class="question-preview" id="'+newID+'"></li>');
+});
+
+// write a function that grabs the question container ID and changes it to be unique each time
+function uniqueID(id) {
+   id = id.split(''); // turn class into an array
+   var alpha =  $(id).splice(id.length-1, 1); // get last index of the array and put in var alpha
+   id.splice(id.length-1,1); // actually remove that last index from the array
+   var counterNumber = (parseInt(alpha) + 1).toString(); // convert string into number,add 1, convert back to string
+   id.push(counterNumber); // add to the array
+   var a = id.join(''); // turn it back into a string
+   return a; // return this new ID as a string
+ }
+</script>
+-->
 <%= link_to 'Survey Results', results_surveys_path(@survey) %>
