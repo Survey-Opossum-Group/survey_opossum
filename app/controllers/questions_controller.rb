@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    
   end
 
   # POST /questions
