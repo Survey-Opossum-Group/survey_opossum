@@ -1,32 +1,19 @@
 
-<p>
-  <strong>Name:</strong>
-  <%= @survey.name %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @survey.author_id %>
-</p>
-
-<p>
-  <strong>Publish:</strong>
-  <%= @survey.publish %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @survey.description %>
-<p>
-  <strong>Questions</strong>
-  <% @survey.questions.each do |question| %>
-    <p><%= question.number%>. <%=question.description%><br><p>
-    <%end%>
+<%= form_tag('/answers') do %>
+ <% @questions.each do |q| %>
+  <div>
+    <%=label_tag q.value %>
+   <%= text_field_tag "answer[#{q.id}]" %>
+ </div>
+<% end %>
 
 
-</p>
+ <%= submit_tag "Submit my answers" %>
+<% end %>
 
-<% session[:survey_id] = @survey.id %>
+
+
+
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back', surveys_path %>
 <%= link_to 'Take This Survey', new_answer_path %>
