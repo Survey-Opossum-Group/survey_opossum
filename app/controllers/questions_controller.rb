@@ -1,15 +1,14 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-
-  # GET /questions
-  # GET /questions.json
-  def index
-    @questions = Question.all
-  end
+  before_action :set_author, only: [:take, :index]
 
   # GET /questions/1
   # GET /questions/1.json
   def show
+  end
+
+  def take
+    @question = Question.new
   end
 
   # GET /questions/new
@@ -19,13 +18,13 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    
   end
 
   # POST /questions
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
@@ -65,6 +64,10 @@ class QuestionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_question
       @question = Question.find(params[:id])
+    end
+
+    def set_author
+      @author = Author.find_by_id(session[:author_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,6 +1,8 @@
-<h1>Editing Survey</h1>
+<h2>Editing Survey</h2>
 
 <%= render 'form' %>
 
+<% session[:survey_id] = @survey.id %>
 <%= link_to 'Show', @survey %> |
 <%= link_to 'Back', surveys_path %>
+<%= link_to 'Take Survey', new_answer_path %>

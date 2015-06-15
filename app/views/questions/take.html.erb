@@ -1,3 +1,5 @@
+<h1>Yay!!!</h1>
+
 <%= form_for(@question) do |f| %>
   <% if @question.errors.any? %>
     <div id="error_explanation">
@@ -11,8 +13,6 @@
     </div>
   <% end %>
 
-  <%= @survey.questions.each do |q| %>
-  <p><%= q.value %></p>
-  <% end %>
+  
 <h1>cool</h1>
 <% end %>

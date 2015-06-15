@@ -1,0 +1,7 @@
+
+<% @survey.questions.each do |q| %>
+  <p>Question: <%= q.value %></p>
+  <% q.answers.each do |a| %>
+    <p>Answer: <%= a.value %></p>
+  <% end %>
+<% end %>

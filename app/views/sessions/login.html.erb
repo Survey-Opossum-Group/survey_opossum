@@ -1,20 +1,42 @@
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
 
-<header class = "navbar">
-  <div class = "navbartext">
-  <%= link_to "Signup!", new_author_path %>
-  </div>
-</header>
+<h1>Please Login</h1>
 
-<div class = "login">
-  <h1>Log In</h1>
+<!--
+<h1>Sessions#login</h1>
+-->
 
-  <%= form_tag :class => "nifty" do %>
-    <%= label_tag :email, class: "email" %>
-    <%= text_field_tag :email %>
-    <%= label_tag :password, class: "password" %>
-    <%= password_field_tag :password %>
-    <%= submit_tag "Login", class: "button" %>
-  <% end %>
+<!--
+<form  class="form" id="login">
+  <label>Email:</label>
+  <input type="email" id="email" name="email" placeholder="email@email.com" autofocus>
+  <label>Password:</label>
+  <input type="text" id="password" name="password" placeholder="********" autofocus>
+
+    <button type="submit" class="button" id="loginButton">Submit</button>
+</form>
+<div style="clear:both;"></div>
+-->
+
+
+
+<div class="form">
+
+<%= form_tag do %>
+  <%= label_tag :email, "Email:", class: "label" %>
+  <%= text_field_tag :email, "", placeholder: "email@email.com" %>
+
+  <%= label_tag :password, "Password:", class: "label"  %>
+  <%= password_field_tag :password, "", placeholder: "**********" %>
+
+  <%= submit_tag "Login", class: "loginButton", id: "loginButton" %>
+<% end %>
+
+</div>
+<div style="clear:both;"></div>
+
+
+<div class="login-bottom-bar">
+  New User?   <%= link_to "Sign Up!", new_author_path %>
+
 
 </div>

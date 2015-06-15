@@ -1,32 +1,50 @@
 
-<h1>Listing Surveys</h1>
+<button type="submit" class="button" id="newSurveyButton">
+<%= link_to 'Create New Survey', new_survey_path %></button>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Author</th>
-      <th>Publish</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="dashboard">
+  <h2>Your Surveys</h2>
 
-  <tbody>
-    <% @surveys.each do |survey| %>
-      <tr>
-        <td><%= survey.name %></td>
-        <td><%= survey.author_id %></td>
-        <td><%= survey.publish %></td>
-        <td><%= survey.description %></td>
-        <td><%= link_to 'Show', survey %></td>
-        <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
-        <td><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+ <!--do while loop that shows existing surveys-->
+  <% @author.surveys.each do |survey| %>
+
+      <div class="survey-block">
+
+      <span class="survey-title">
+        <%= survey.name  %>
+      </span>
+
+      <span class="survey-links">
+
+
+        <% session[:survey_id] = survey.id %>
+
+        <%= link_to 'Results', results_surveys_path %>
+        <%= link_to 'Take Survey', new_answer_path if survey.publish == true %>
+
+    
+
+
+        <%= link_to 'Show', survey %>
+
+        <%= link_to 'Edit', edit_survey_path(survey) %>
+
+        <%= link_to 'Delete', survey, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+      </span>
+
+        <div style="clear:both;"></div>
+  </div>
+
+  <% end %>
+
+</div>
+
+
+
+</div>
+
 
 <br>
-
-<%= link_to 'New Survey', new_survey_path %>
