@@ -17,10 +17,13 @@
 
       <span class="survey-links">
 
+
         <% session[:survey_id] = survey.id %>
 
         <%= link_to 'Results', results_surveys_path %>
         <%= link_to 'Take Survey', new_answer_path if survey.publish == true %>
+
+    
 
 
         <%= link_to 'Show', survey %>
