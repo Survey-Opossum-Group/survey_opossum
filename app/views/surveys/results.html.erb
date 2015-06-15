@@ -1,7 +1,15 @@
+<div class="dashboard">
+
 
 <% @survey.questions.each do |q| %>
-  <p>Question: <%= q.value %></p>
+  <p>Question:<br /> <%= q.value %></p>
+
   <% q.answers.each do |a| %>
-    <p>Answer: <%= a.value %></p>
+    <p>Answer: <br /><%= a.value %></p>
   <% end %>
 <% end %>
+
+
+
+
+</div>
