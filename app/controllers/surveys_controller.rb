@@ -18,7 +18,7 @@ class SurveysController < ApplicationController
   end
 
   def results
-    @surveys = @author.surveys
+    @survey = Survey.find_by_id(session[:survey_id])
   end
 
   # GET /surveys/new
@@ -53,7 +53,7 @@ class SurveysController < ApplicationController
   def update
     respond_to do |format|
       if @survey.update(survey_params)
-        format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
+        format.html { redirect_to edit_survey_path(@survey), notice: 'Survey was successfully updated.' }
         format.json { render :show, status: :ok, location: @survey }
       else
         format.html { render :edit }

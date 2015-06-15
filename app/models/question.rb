@@ -5,5 +5,6 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :answers #reject if required != true
 
   validates :survey_id, presence: true
+  validates :number, uniqueness: true
 
 end
