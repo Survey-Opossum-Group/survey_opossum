@@ -20,22 +20,30 @@
     </div>
     <div class="field">
       <%= f.hidden_field :question_id, :value => q.id %>
+      <%= form_tag do %>
+       <% @questions.each do |q| %>
+         <%= text_field_tag "answer[#{q.id}]" %>
+      <% end %>
     </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+
   </div>
+
+<% end %>
+
+
+
+
 <% end %>
 
 
 <% end %>
-
-<script>
-
-$('input').on('click', function() {
-  $(this).parent().parent().parent().fadeOut(700);
-});
-
-
-
-</script>
+<%= submit_tag "Submit my answers" %>
+// <script>
+//
+// $('input').on('click', function() {
+//   $(this).parent().parent().parent().fadeOut(700);
+// });
+//
+//
+//
+// </script>
