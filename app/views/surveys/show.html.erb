@@ -1,17 +1,21 @@
 
+<div class="form">
 <%= form_tag('/answers') do %>
   <% @questions.each do |q| %>
   <div class="field">
     <%= label_tag q.value %>
-    <% if q.question_type == "Yes/No"%>
+    <% if q.question_type == "Yes/No"%> <br />
       <p><%= radio_button_tag "answer[#{q.id}]","Yes" %>Yes</p>
       <p><%= radio_button_tag "answer[#{q.id}]","No" %>No</p>
 
     <% elsif q.question_type == "Short Answer" %>
+    <br />
       <%= text_field_tag "answer[#{q.id}]" %>
     <% elsif q.question_type == "Long Answer" %>
+    <br />
       <%= text_area_tag "answer[#{q.id}]" %>
     <% else %>
+    <br />
       <%= text_field_tag "answer[#{q.id}]" %>
     <% end %>
   </div>
@@ -19,5 +23,6 @@
   <% end %>
 
 
-  <%= submit_tag "Submit my answers" %>
+  <%= submit_tag "Submit my answers", class: "surveySubmit" %>
 <% end %>
+</div>
