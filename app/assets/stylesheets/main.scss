@@ -82,6 +82,7 @@ h1,h2,h3 {
   font-size:1em;
   width:auto;
   margin-right:0;
+  cursor:pointer;
 }
 
 .form {
@@ -218,10 +219,6 @@ h1,h2,h3 {
 
   }
 }
-
-
-
-
 .question-container {
   margin:1em 0;
   background:#ececea;
@@ -245,31 +242,15 @@ h1,h2,h3 {
   overflow: auto;
 }
 
-
 .container textarea{
   margin:10px 0;
 }
 
-#fieldQuestion {
-  border:0px solid #000;
-}
-
-#fieldRequired {
-
-}
-
-#fieldNumber {
-  display:none;
-}
-
-#fieldDescription {
-
-}
-
-#fieldDestroy {
-
-
-}
+#fieldQuestion {}
+#fieldRequired {}
+#fieldNumber {display:none;}
+#fieldDescription {}
+#fieldDestroy {}
 
 .checkBoxInline {
   padding: .25em .25em;
@@ -279,8 +260,6 @@ h1,h2,h3 {
    border:0px solid #000;
   }
 }
-
-
 #fieldPublish {
   margin:1em 0;
   background:#ececea;
@@ -293,7 +272,25 @@ h1,h2,h3 {
    border:0px solid #000;
   }
 }
-
-
-.options-toggle { text-decoration:underline; cursor: pointer; margin-top:.5em; display:block; text-align:right;}
-.optional-settings { display:none; margin-top:1em;}
+.options-toggle {
+  text-decoration:underline;
+  cursor: pointer;
+  margin-top:.5em;
+  display:block;
+  text-align:right;
+}
+.optional-settings {
+  display:none;
+  margin-top:1em;
+}
+.form .surveySubmit {
+  background: #d7725a;
+  border:2px solid #ed6e53;
+  border-radius:10px;
+  color:#ffffff;
+  padding: .5em 1em;
+  font-size:1em;
+  width:100%;
+  margin-right:0;
+  cursor:pointer;
+}
