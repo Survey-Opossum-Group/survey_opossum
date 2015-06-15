@@ -12,11 +12,6 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-
 <!-- #moved below#
  <div class="field">
     <%= f.label :publish %><br>
@@ -34,7 +29,7 @@
   <%= f.fields_for(:questions) do |ff| %>
 
 
-<!-- 
+<!--
     <div class="form-container">
     <form  class="z_bootstrap-frm" id="target">
       <input type="text" id="questionInput" name="question" placeholder="Type your question here..." autofocus>
