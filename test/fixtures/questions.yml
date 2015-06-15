@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  question_type: MyString
   value: MyString
   survey_id: 1
   required: false
@@ -9,7 +9,7 @@ one:
   description: MyText
 
 two:
-  name: MyString
+  question_type: MyString
   value: MyString
   survey_id: 1
   required: false
