@@ -12,147 +12,135 @@
     </div>
   <% end %>
 
-<!-- #moved below#
- <div class="field">
-    <%= f.label :publish %><br>
-    <%= f.check_box :publish %>
-  </div>
--->
-<div class="field">
-  <%= f.label :name %><br>
-  <%= f.text_field :name %>
-</div>
+
+
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :name, "Survey Name" %><br>
+    <%= f.text_field :name %>
   </div>
 
 
-<!--  <h1>Questions!</h1> -->
-  <%= f.fields_for(:questions) do |ff| %>
-
-
-<!--
-    <div class="form-container">
-    <form  class="z_bootstrap-frm" id="target">
-      <input type="text" id="questionInput" name="question" placeholder="Type your question here..." autofocus>
-      <button type="submit" class="loginButton">+ Add</button>
-    </form>
-    <div style="clear:both;">
-
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, placeholder: "", value: "Describe your survey here." %>
     </div>
-    </div> -->
 
-
-
-    <script type="text/template" id="li-template">
-    <li class="question-preview" id="ruby-0">
-      <!--question from forms will go here-->
-    </li>
-    </script>
-
-    <ol class="question-container">
-       <!--questions will go here-->
-    </ol>
+<%= f.fields_for(:questions) do |ff| %>
 
 
 
 
 
+<div class="eachQuestionBox">
 
-  <div class="field">
-    <%= ff.label :value %><br>
+
+  <div class="field" id="fieldQuestion">
+    <%= ff.label :value, "Type Your Survey Question Here:" %><br>
     <%= ff.text_field :value %>
   </div>
-  <div class="field">
-    <%= ff.label :required %><br>
-    <%= ff.check_box :required %>
+  <br />
+
+
+
+    <div class="field" style="float:left;">
+      <%= ff.label :question_type, "Question Type:", id: "questionType" %>
+      <%= ff.radio_button(:question_type, "Short Answer",  checked: true, class: "radioInline")%>Short Answer <br />
+      <%= ff.radio_button(:question_type, "Long Answer", class: "radioInline")%>Long Answer<br />
+      <%= ff.radio_button(:question_type, "Yes/No", class: "radioInline")%>Yes/No Answer <br /><br />
+      <div style="clear:both;"></div>
+
+    </div>
+
+    <div class="field checkBoxInline" id="requiredDiv">
+      <%= ff.check_box :required %>
+      <%= ff.label :required, "Required Question" %><br>
+      <div style="clear:both;"></div>
+
+    </div>
+
+
+
+
+
+
+
+  <!--randomly generated, set to display none-->
+  <div class="field" id="fieldNumber">
+    <%= ff.label :number, "Question Number" %><br>
+    <%= ff.text_field :number, class: "numberFieldClass" %>
   </div>
-  <div class="field">
-    <%= ff.label :number %><br>
-    <%= ff.text_field :number %>
+
+  <div style="clear:both;"></div>
+
+  <div class="optional-settings">
+
+    <div class="field">
+      <%= ff.label :description %><br>
+      <%= ff.text_area :description, value: "Optional: edit this field to describe your question. This is for your reference only and is not visible on the survey." %>
+    </div>
+
+    <div class="field checkBoxInline">
+      <%= ff.check_box :_destroy %>
+      <%= ff.label :_destroy, "Delete Question" %><br>
+    </div>
   </div>
-  <div class="field">
-    <%= ff.label :description %><br>
-    <%= ff.text_field :description %>
-  </div>
-  <div>
-    <%= ff.label :question_type %><br>
-    <p><%= ff.radio_button(:question_type, "Yes/No")%>Yes/No</p>
-    <p><%= ff.radio_button(:question_type, "Short Answer")%>Short Answer</p>
-    <p><%= ff.radio_button(:question_type, "Long Answer")%>Long Answer</p>
-  </div>
-  <div class="field">
-    <%= ff.label :_destroy %><br>
-    <%= ff.check_box :_destroy %>
-  </div>
+
+  <div style="clear:both;"></div>
+  <span class="options-toggle">More Options</span>
+
+
+
+
+
+</div>
   <% end %>
 
 
 
-<div class="field">
-  <%= f.label :publish, "Check Publish Survey" %>
+
+
+  <div class="field checkBoxInline" id="fieldPublish">
   <%= f.check_box :publish %>
-</div>
+  <%= f.label :publish, "Publish Survey Now" %>
+
+  </div>
+
 
   <div class="actions">
-    <%= f.submit "Update Survey" %>
+    <%= f.submit "Update Survey", class: "surveySubmit", id: "surveySubmit" %>
+
   </div>
 <% end %>
 
 
 </div>
 
-<!--
+
+
+
+
 <script>
-
-// only works when it's form
-// which disabled the original editing survey form
-// does nothing when its set to class/id of my added form
-// also disabling create new survey button
-// and leaving some messy tags there
-// change form to whatever below, create new survey, edit, then change back to form to see it in action
-$('form').submit(function (e) {
-  // prevent form from submitting
-    e.stopPropagation();
-    e.preventDefault();
-
-    // grab user input & clear form
-    var inputValue = $('#questionInput').val();
-    $('#questionInput').val('');
-
-    // variable for li HTML. the first time it runs it should have an id of ruby-0.
-    var templateHtml = $('#li-template').html();
-
-    // add that LI to the DOM
-    $('.question-container').append(templateHtml);
-
-    // get the id of the last LI item on the page, which is the one we just added to the DOM
-     var fooID = $( '.question-container li:last-child' ).attr('id');
-    console.log(fooID);
-   // pass it to a function that will return that id+1 so it's always unique
-    var newID = uniqueID(fooID);
-
-    // LI already exists on the page with ruby-X ID, grab it and change ID to new one
-    $('.question-container li:last-child').attr('id', newID);
-
-      // stick the content into the LI we just added to the page
-    $('#'+newID).append(inputValue);
-
-    // now change the templateHtml script to also reflect this new ID so it is caught in the loop
-    // and each submission generates a new ID for each question
-    $('#li-template').html('<li class="question-preview" id="'+newID+'"></li>');
+$('.addQuestion').click(function() {
+// on click clone the existing eachQuestionBox DOM elment
+})
+// alternate background colors per question
+$('.eachQuestionBox:odd').css("background-color", "#ebeaec");
+// toggle options on edit survey page
+$('.options-toggle').click(function() {
+  $(this).siblings('.optional-settings').slideToggle()
 });
-
-// write a function that grabs the question container ID and changes it to be unique each time
-function uniqueID(id) {
-   id = id.split(''); // turn class into an array
-   var alpha =  $(id).splice(id.length-1, 1); // get last index of the array and put in var alpha
-   id.splice(id.length-1,1); // actually remove that last index from the array
-   var counterNumber = (parseInt(alpha) + 1).toString(); // convert string into number,add 1, convert back to string
-   id.push(counterNumber); // add to the array
-   var a = id.join(''); // turn it back into a string
-   return a; // return this new ID as a string
- }
+// create random number for number field
+updateNumberField();
+function updateNumberField() {
+  // generate random nimber
+  var min = 0; // ~
+  var max = 1000000;
+  var x = Math.floor((Math.random() * ((max + 1) - min)) + min);
+  console.log(x);
+  // plug it in to last number input on page
+  var newNumber = x;
+  $('.numberFieldClass:last').val(newNumber);
+  currentNumberField = $('.numberFieldClass:last').val();
+  console.log("currentNumberField: " + currentNumberField);
+}
 </script>
--->
