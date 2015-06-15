@@ -35,6 +35,7 @@
 
 
 
+<!--
     <div class="form-container">
     <form  class="z_bootstrap-frm" id="target">
       <input type="text" id="questionInput" name="question" placeholder="Type your question here..." autofocus>
@@ -43,7 +44,7 @@
     <div style="clear:both;">
 
     </div>
-    </div>
+    </div> -->
 
 
 
@@ -59,10 +60,9 @@
 
 
 
-<!--
 
 
-previous values, this should be merged/replaced with functionality above?
+
   <div class="field">
     <%= ff.label :value %><br>
     <%= ff.text_field :value %>
@@ -79,12 +79,16 @@ previous values, this should be merged/replaced with functionality above?
     <%= ff.label :description %><br>
     <%= ff.text_field :description %>
   </div>
+  <div>
+    <%= ff.label_tag :question_type %><br>
+    <%= ff.check_box_tag(:question_type, "Yes/No")%>
+  </div>
   <div class="field">
     <%= ff.label :_destroy %><br>
     <%= ff.check_box :_destroy %>
   </div>
   <% end %>
--->
+
 
 
 <div class="field">
