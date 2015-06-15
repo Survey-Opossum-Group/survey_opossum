@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def login
     if request.post?
       author = Author.find_by_email(params[:email])
-      if author && author.authenticate(params[:password]) #password_digest?
+      if author && author.authenticate(params[:password]) 
         session[:author_id] = author.id
         redirect_to surveys_path, notice: "Login complete"
       else

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :surveys do
-    collection do
+    member do
       get :results
     end
   end
