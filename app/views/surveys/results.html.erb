@@ -1,9 +1,7 @@
 
-<% @surveys.each do |s| %>
-  <% s.questions.each do |q| %>
-    <p><%= q.value %></p>
-    <% q.answers.each do |a| %>
-      <p><%= a.value %></p>
-    <% end %>
+<% @survey.questions.each do |q| %>
+  <p>Question: <%= q.value %></p>
+  <% q.answers.each do |a| %>
+    <p>Answer: <%= a.value %></p>
   <% end %>
 <% end %>
