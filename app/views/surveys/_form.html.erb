@@ -79,8 +79,8 @@
   <div>
     <%= ff.label :question_type %><br>
     <p><%= ff.radio_button(:question_type, "Yes/No")%>Yes/No</p>
-    <p><%= ff.radio_button(:question_type, "Short Answer")%>Short Answer</p>
-    <p><%= ff.radio_button(:question_type, "Long Answer")%>Long Answer</p>
+    <p><%= ff.text_field(:question_type, "Short Answer")%>Short Answer</p>
+    <p><%= ff.text_area(:question_type, "Long Answer")%>Long Answer</p>
   </div>
   <div class="field">
     <%= ff.label :_destroy %><br>
@@ -102,6 +102,7 @@
 
 
 </div>
+
 
 <!--
 <script>
@@ -156,4 +157,3 @@ function uniqueID(id) {
  }
 </script>
 -->
-<%= link_to 'Survey Results', results_surveys_path(@survey) %>
