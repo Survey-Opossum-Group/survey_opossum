@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   before_action :logged_in?
 
-  before_action :set_survey, only: [:show, :edit, :update, :destroy]
+  before_action :set_survey, only: [:show, :edit, :update, :destroy, :results]
   before_action :set_author, only: [:index, :results]
 
 
@@ -14,11 +14,11 @@ class SurveysController < ApplicationController
   # GET /surveys/1
   # GET /surveys/1.json
   def show
-
+    @questions = @survey.questions
   end
 
   def results
-    @survey = Survey.find_by_id(session[:survey_id])
+
   end
 
   # GET /surveys/new
@@ -29,6 +29,7 @@ class SurveysController < ApplicationController
   # GET /surveys/1/edit
   def edit
     @survey.questions.build
+    # @reorder = Survey.questions.where(:survey_id).order(:required)
   end
 
   # POST /surveys
@@ -85,7 +86,7 @@ class SurveysController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
       params.require(:survey).permit(:name, :author_id, :publish, :description,
-        questions_attributes: [:id, :name, :value, :required, :number, :description, :_destroy])
+        questions_attributes: [:id, :question_type, :value, :required, :number, :description, :_destroy])
     end
 
     def logged_in?
