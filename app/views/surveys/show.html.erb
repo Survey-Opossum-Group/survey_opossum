@@ -1,19 +1,14 @@
 
 <%= form_tag('/answers') do %>
- <% @questions.each do |q| %>
-  <div>
-    <%=label_tag q.value %>
-   <%= text_field_tag "answer[#{q.id}]" %>
- </div>
+  <% @questions.each do |q| %>
+  <div class="field">
+    <%= label_tag q.value %>
+    <% if q.question_type == 
+    <%= text_field_tag "answer[#{q.id}]" %>
+  </div>
+
+  <% end %>
+
+
+  <%= submit_tag "Submit my answers" %>
 <% end %>
-
-
- <%= submit_tag "Submit my answers" %>
-<% end %>
-
-
-
-
-<%= link_to 'Edit', edit_survey_path(@survey) %> |
-<%= link_to 'Back', surveys_path %>
-<%= link_to 'Take This Survey', new_answer_path %>
